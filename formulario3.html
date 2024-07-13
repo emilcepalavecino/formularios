@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Datos Personales</title>
+</head>
+<body style="background-color: #333; color: #fff; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+    <div class="form-container" style="background-color: #444; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
+        <h1>Formulario de Datos Personales</h1>
+        <form action="" method="post">
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label for="nombre" style="display: block; margin-bottom: 5px;">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #555; border-radius: 4px; background-color: #666; color: #fff;">
+            </div>
+                
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label for="apellido" style="display: block; margin-bottom: 5px;">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #555; border-radius: 4px; background-color: #666; color: #fff;">
+            </div>
+                
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label for="email" style="display: block; margin-bottom: 5px;">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #555; border-radius: 4px; background-color: #666; color: #fff;">
+            </div>
+                
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label for="fecha-nacimiento" style="display: block; margin-bottom: 5px;">Fecha de Nacimiento:</label>
+                <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #555; border-radius: 4px; background-color: #666; color: #fff;">
+            </div>
+                
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label for="residencia" style="display: block; margin-bottom: 5px;">Residencia:</label>
+                <input type="text" id="residencia" name="residencia" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #555; border-radius: 4px; background-color: #666; color: #fff;">
+            </div>
+                
+            <div class="form-group" style="margin-bottom: 15px;">
+                <button type="submit" style="padding: 10px 15px; background-color: #fcd702; color: #333; border: none; border-radius: 4px; cursor: pointer;">Enviar</button>
+            </div>
+        </form>
+    </div>
+
+<script>
+    function validarFormulario() {
+        // Limpiar mensajes de error
+        document.getElementById('nombreError').textContent = '';
+        document.getElementById('apellidoError').textContent = '';
+        document.getElementById('emailError').textContent = '';
+        document.getElementById('fechaError').textContent = '';
+        document.getElementById('residenciaError').textContent = '';
+
+        var nombre = document.getElementById('nombre').value;
+        var apellido = document.getElementById('apellido').value;
+        var email = document.getElementById('email').value;
+        var fechaNacimiento = document.getElementById('fecha-nacimiento').value;
+        var residencia = document.getElementById('residencia').value;
+
+        var esValido = true;
+
+        // Validar campo de nombre
+        if (nombre.trim() === '') {
+            document.getElementById('nombreError').textContent = 'El nombre es obligatorio.';
+            esValido = false;
+        }
+
+        // Validar campo de apellido
+        if (apellido.trim() === '') {
+            document.getElementById('apellidoError').textContent = 'El apellido es obligatorio.';
+            esValido = false;
+        }
+
+        // Validar campo de correo electrónico
+        if (email.trim() === '') {
+            document.getElementById('emailError').textContent = 'El correo electrónico es obligatorio.';
+            esValido = false;
+        } else if (!email.includes('@')) {
+            document.getElementById('emailError').textContent = 'El correo electrónico debe contener un "@"';
+            esValido = false;
+        }
+
+        // Validar campo de fecha de nacimiento
+        if (fechaNacimiento.trim() === '') {
+            document.getElementById('fechaError').textContent = 'La fecha de nacimiento es obligatoria.';
+            esValido = false;
+        }
+
+        // Validar campo de residencia
+        if (residencia.trim() === '') {
+            document.getElementById('residenciaError').textContent = 'La residencia es obligatoria.';
+            esValido = false;
+        }
+
+        return esValido;
+    }
+</script>
+
+</body>
+</html>
