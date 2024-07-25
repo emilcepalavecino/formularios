@@ -13,32 +13,32 @@
                     <div class="form-container">
                         <h1>Formulario de Datos Personales</h1>
                         <form action="" method="post">
-                            <div class="form-group" style="margin-bottom: 15px;">
+                            <div class="form-group mb-3" style="margin-bottom: 15px;">
                                 <label for="nombre" style="display: block; margin-bottom: 5px;">Nombre:</label>
                                 <input type="text" id="nombre" name="nombre" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #555; border-radius: 4px; background-color: #666; color: #fff;">
                             </div>
                             
-                            <div class="form-group" style="margin-bottom: 15px;">
+                            <div class="form-group mb-3" style="margin-bottom: 15px;">
                                 <label for="apellido" style="display: block; margin-bottom: 5px;">Apellido:</label>
                                 <input type="text" id="apellido" name="apellido" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #555; border-radius: 4px; background-color: #666; color: #fff;">
                             </div>
                 
-                            <div class="form-group" style="margin-bottom: 15px;">
+                            <div class="form-group mb-3" style="margin-bottom: 15px;">
                                 <label for="email" style="display: block; margin-bottom: 5px;">Correo Electrónico:</label>
                                 <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #555; border-radius: 4px; background-color: #666; color: #fff;">
                             </div>
                 
-                            <div class="form-group" style="margin-bottom: 15px;">
+                            <div class="form-group mb-3" style="margin-bottom: 15px;">
                                 <label for="fecha-nacimiento" style="display: block; margin-bottom: 5px;">Fecha de Nacimiento:</label>
                                 <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #555; border-radius: 4px; background-color: #666; color: #fff;">
                             </div>
                 
-                            <div class="form-group" style="margin-bottom: 15px;">
+                            <div class="form-group mb-3" style="margin-bottom: 15px;">
                                 <label for="residencia" style="display: block; margin-bottom: 5px;">Residencia:</label>
                                 <input type="text" id="residencia" name="residencia" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #555; border-radius: 4px; background-color: #666; color: #fff;">
                             </div>
                 
-                            <div class="form-group" style="margin-bottom: 15px;">
+                            <div class="form-group d-grid" style="margin-bottom: 15px;">
                                 <button type="submit" style="padding: 10px 15px; background-color: #fcd702; color: #333; border: none; border-radius: 4px; cursor: pointer;">Enviar</button>
                             </div>
                         </form>
@@ -80,9 +80,12 @@
         if (email.trim() === '') {
             document.getElementById('emailError').textContent = 'El correo electrónico es obligatorio.';
             esValido = false;
-        } else if (!email.includes('@')) {
-            document.getElementById('emailError').textContent = 'El correo electrónico debe contener un "@"';
-            esValido = false;
+        } else {
+            const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+\.com$/.test(email);
+            if (!correoValido) {
+                document.getElementById('emailError').textContent = 'El correo electrónico debe tener el formato correcto (ejemplo@dominio.com).';
+                esValido = false;
+            }
         }
 
         // Validar campo de fecha de nacimiento
